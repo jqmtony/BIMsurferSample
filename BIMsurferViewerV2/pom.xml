@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.xplus</groupId>
+		<artifactId>BIMsurferSample</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<!-- <groupId>org.xplus</groupId> -->
+	<artifactId>BIMsurferViewerV2</artifactId>
+	<!-- <version>1.0.0</version> -->
+	<packaging>war</packaging>
+	<name>BIMsurferViewerV2 Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>  
+            <groupId>javax.servlet</groupId>  
+            <artifactId>javax.servlet-api</artifactId>  
+            <version>3.1.0</version>  
+            <scope>provided</scope>  
+        </dependency>  
+        <dependency>  
+            <groupId>javax.servlet.jsp</groupId>  
+            <artifactId>jsp-api</artifactId>  
+            <version>2.2</version>  
+            <scope>provided</scope>  
+        </dependency>  
+        <dependency>  
+            <groupId>jstl</groupId>  
+            <artifactId>jstl</artifactId>  
+            <version>1.2</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>taglibs</groupId>  
+            <artifactId>standard</artifactId>  
+            <version>1.1.2</version>  
+        </dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<!--默认的主代码目录 -->
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<!--默认的测试代码目录 -->
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+
+		<!--处理无法加载资源配置文件 -->
+
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!--tomcat插件 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<!--tomcat管理路径 -->
+					<url>http://localhost:8086/manager/text</url>
+					<!--与settings.xml文件中Server的id相同 -->
+					<server>tomcat7</server>
+					<uriEncoding>utf-8</uriEncoding>
+					<port>8086</port><!--服务器端口号80可以省略 -->
+					<path>/</path><!--应用的部署位置 -->
+					<contextReloadable>true</contextReloadable>
+					<systemProperties>
+						<java.util.logging.SimpleFormatter.format>[%4$s] %1$tF %1$tT %3$s %5$s %n</java.util.logging.SimpleFormatter.format>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
