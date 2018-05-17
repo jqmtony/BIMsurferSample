@@ -12,6 +12,10 @@
 		<module>BIMsurferViewerV1</module>
 		<module>BIMsurferViewerV2</module>
 	</modules>
+	
+	<dependencyManagement>
+	
+	</dependencyManagement>
 
 	<build>
 		<pluginManagement>
@@ -24,6 +28,7 @@
 						<source>1.7</source>
 						<target>1.7</target>
 						<verbose>true</verbose>
+						<encoding>UTF-8</encoding>
 					</configuration>
 				</plugin>
 			</plugins>
